@@ -12,7 +12,7 @@
 
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-uint32_t gold = strip.Color(255, 215, 0);
+uint32_t white = strip.Color(246, 231, 210);
 
 void setup() {
 
@@ -29,6 +29,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
- strip.fill(gold);
+ strip.fill(white);
  strip.show();
 }
