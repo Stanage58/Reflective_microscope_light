@@ -36,33 +36,39 @@ void loop() {
 
   current_sensor_value = analogRead(sensor_pin);
 
-  if (current_sensor_value - previous_sensor_value > 5 ) {
-      brightness_value = current_sensor_value;
-      //strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
-      Serial.print("POS CHANGE");
+  if (current_sensor_value - previous_sensor_value > 5) {
+      brightness_value = current_sensor_value / 16;
+      strip.setBrightness(brightness_value); // Set BRIGHTNESS to about 1/5 (max = 255)
+      Serial.print("POS CHANGE:");
       Serial.println(current_sensor_value);
+      Serial.print("Brightness:");
+      Serial.println(brightness_value);
       previous_sensor_value = current_sensor_value;
       delay(50);
   } else {
     if (previous_sensor_value - current_sensor_value > 5 ) {
-      brightness_value = current_sensor_value;
-      //strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
+      brightness_value = current_sensor_value / 16;
+      strip.setBrightness(brightness_value); // Set BRIGHTNESS to about 1/5 (max = 255)
       Serial.print("NEG CHANGE");
       Serial.println(current_sensor_value);
+      Serial.print("Brightness:");
+      Serial.println(brightness_value);
       previous_sensor_value = current_sensor_value;
       delay(50);
     } else {
-         Serial.println(current_sensor_value);
+        //  Serial.print("WAIT:");
+        //  Serial.println(current_sensor_value);
+        //  Serial.print("Brightness:");
+         Serial.println(brightness_value);
          delay(50);
   }
   }
 
-
-  }
-
  
-  //strip.fill(white);
- // strip.show();
+  strip.fill(white);
+  strip.show();
+
+}
 
 
 
